@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Art Image Fill</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Word Art Image Fill</h1>
+            <p>Create stunning text art with multiple image fills</p>
+        </header>
+
+        <div class="main-wrapper">
+            <!-- Control Panel -->
+            <aside class="control-panel">
+                <section class="control-group">
+                    <label for="wordInput">Your Word:</label>
+                    <input 
+                        type="text" 
+                        id="wordInput" 
+                        placeholder="Type any word..." 
+                        maxlength="30"
+                    >
+                </section>
+
+                <section class="control-group">
+                    <label for="fontSelect">Font Style:</label>
+                    <select id="fontSelect">
+                        <option value="Arial, sans-serif">Arial</option>
+                        <option value="'Georgia', serif">Georgia</option>
+                        <option value="'Courier New', monospace">Courier New</option>
+                        <option value="'Comic Sans MS', cursive">Comic Sans</option>
+                        <option value="'Trebuchet MS', sans-serif">Trebuchet MS</option>
+                        <option value="'Brush Script MT', cursive">Brush Script</option>
+                        <option value="'Impact', fantasy">Impact</option>
+                        <option value="'Palatino', serif">Palatino</option>
+                    </select>
+                </section>
+
+                <section class="control-group">
+                    <label for="fontSizeInput">Font Size (px):</label>
+                    <input 
+                        type="range" 
+                        id="fontSizeInput" 
+                        min="50" 
+                        max="300" 
+                        value="150"
+                        class="slider"
+                    >
+                    <span id="fontSizeValue">150</span>px
+                </section>
+
+                <section class="control-group">
+                    <label for="fillMode">Fill Mode:</label>
+                    <select id="fillMode">
+                        <option value="word">Per Word</option>
+                        <option value="letter">Per Letter</option>
+                    </select>
+                </section>
+
+                <!-- Multiple Images Section -->
+                <section class="control-group">
+                    <label>Upload Multiple Images:</label>
+                    <input 
+                        type="file" 
+                        id="imageUpload" 
+                        accept="image/*"
+                        multiple
+                        class="file-input"
+                    >
+                    <p class="helper-text">💡 Upload multiple images to cycle through them</p>
+                    <div id="imageList" class="image-list"></div>
+                </section>
+
+                <section class="control-group">
+                    <label>Image Navigation:</label>
+                    <div class="image-nav">
+                        <button id="prevImageBtn" class="btn-nav">← Previous</button>
+                        <span id="imageCounter" class="image-counter">No images</span>
+                        <button id="nextImageBtn" class="btn-nav">Next →</button>
+                    </div>
+                </section>
+
+                <section class="control-group">
+                    <label>Current Image Offset:</label>
+                    <div class="offset-controls">
+                        <div>
+                            <label for="offsetX">X Offset (px):</label>
+                            <input 
+                                type="range" 
+                                id="offsetX" 
+                                min="-200" 
+                                max="200" 
+                                value="0"
+                                class="slider"
+                            >
+                            <span id="offsetXValue">0</span>px
+                        </div>
+                        <div>
+                            <label for="offsetY">Y Offset (px):</label>
+                            <input 
+                                type="range" 
+                                id="offsetY" 
+                                min="-200" 
+                                max="200" 
+                                value="0"
+                                class="slider"
+                            >
+                            <span id="offsetYValue">0</span>px
+                        </div>
+                    </div>
+                </section>
+
+                <section class="control-group">
+                    <button id="saveBtn" class="btn btn-primary">💾 Save as PNG</button>
+                    <button id="resetBtn" class="btn btn-secondary">🔄 Reset</button>
+                </section>
+            </aside>
+
+            <!-- Canvas Display -->
+            <main class="canvas-wrapper">
+                <div id="canvas" class="canvas">
+                    <span id="textDisplay" class="text-display">Your Word</span>
+                </div>
+                <p class="hint">Upload images, navigate between them, and adjust offset for perfect placement</p>
+            </main>
+        </div>
+    </div>
+
+    <!-- Hidden canvas for exporting -->
+    <canvas id="exportCanvas" style="display: none;"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
